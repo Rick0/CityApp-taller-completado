@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<nav class="navbar navbar-expand-md fixed-top navbar-dark bg-primary font-weight-bolder" th:fragment="navbar">
+    <a class="navbar-brand" href="/">CityApp</a>
+
+    <div class="collapse navbar-collapse">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item"><span class="nav-link">|</span></li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link  dropdown-toggle" href="#" data-toggle="dropdown">Barrios</a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="/neighbourhood/list">Listado</a></li>
+                    <li><a class="dropdown-item" href="/neighbourhood/crud">Crear</a></li>
+                </ul>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link  dropdown-toggle" href="#" data-toggle="dropdown">Comunas</a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="/commune/list">Listado</a></li>
+                    <li><a class="dropdown-item" href="/commune/crud">Crear</a></li>
+                </ul>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link  dropdown-toggle" href="#" data-toggle="dropdown">Bancos</a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="/bank/list">Listado</a></li>
+                    <li><a class="dropdown-item" href="/bank/crud">Crear</a></li>
+                </ul>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="/atm/list">Cajeros automáticos</a>
+            </li>
+
+            <li class="nav-item"><span class="nav-link">|</span></li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="/statistics">Estadísticas</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/aggregation">Agregación</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+<div th:fragment="navbar-js">
+    <script src="/js/jquery-3.5.1.slim.min.js"></script>
+    <script src="/js/navbar.js"></script>
+</div>

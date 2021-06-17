@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/head.html :: head"></head>
+<head><title>CityApp</title></head>
+
+<body class="navbar-offset">
+    <nav th:replace="fragments/navbar.html :: navbar"></nav>
+
+
+    <main role="main" class="pt-3 pb-3 vertical-stretch">
+        <div th:replace="fragments/list.html :: listTitle('Programación con base de datos')"></div>
+    </main>
+
+
+    <footer th:replace="fragments/footer.html :: footer"></footer>
+    <nav th:replace="fragments/navbar.html :: navbar-js"></nav>
+</body>
+</html>

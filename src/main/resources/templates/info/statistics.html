@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head th:insert="fragments/head.html :: head"></head>
+<head><title>CityApp - Estadísticas</title></head>
+
+<body class="navbar-offset">
+    <nav th:replace="fragments/navbar.html :: navbar"></nav>
+
+
+    <main role="main" class="pt-3 pb-3 vertical-stretch">
+        <div th:replace="fragments/list.html :: listTitle('Estadísticas de las tablas')"></div>
+
+        <div th:if="${tablesCountMap.empty}">
+            <div th:replace="fragments/list.html :: listEmpty('No hay estadísticas')"></div>
+        </div>
+
+        <div class="container table-striped table-hover small-list-table" th:unless="${tablesCountMap.empty}">
+            <div class="row bg-dark text-light font-weight-bold h2 list-header">
+                <div class="col-6 align-self-center" title="Nombre de la tabla">Tabla</div>
+                <div class="col-6 align-self-center" title="Cantidad de filas">Cantidad</div>
+            </div>
+
+            <div class="row list-row" th:each="tableCountEntry : ${tablesCountMap}">
+                <div class="col-6 align-self-center" th:text="${tableCountEntry.key}"></div>
+                <div class="col-6 align-self-center" th:text="${tableCountEntry.value}"></div>
+            </div>
+        </div>
+    </main>
+
+
+    <footer th:replace="fragments/footer.html :: footer"></footer>
+    <nav th:replace="fragments/navbar.html :: navbar-js"></nav>
+</body>
+</html>

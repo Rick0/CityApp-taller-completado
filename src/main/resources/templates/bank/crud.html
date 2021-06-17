@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head th:insert="fragments/head.html :: head"></head>
+<head><title>CityApp - Bancos</title></head>
+
+<body class="navbar-offset">
+    <nav th:replace="fragments/navbar.html :: navbar"></nav>
+
+
+    <main role="main" class="pt-3 pb-3 vertical-stretch">
+        <div th:replace="fragments/list.html :: listTitle('Modificar un banco')"></div>
+
+        <div class="container">
+            <form method="post" th:action="@{/bank/add}" th:object="${bank}" th:if="${bank.id == null}">
+                <p>ID: <input type="text" required th:field="*{id}" /></p>
+                <p>Nombre: <input type="text" required th:field="*{name}" /></p>
+
+                <button type="submit" value="Crear" class="btn btn-primary font-weight-bold" >
+                    Crear<img src="/img/icons/plus-square-fill.svg" class="crud-icon" alt="Agregar" width="16" height="16">
+                </button>
+            </form>
+
+            <form method="post" th:action="@{/bank/put}" th:object="${bank}" th:unless="${bank.id == null}">
+                <p>ID: <input type="text" th:field="*{id}" class="readonly-input" readonly /></p>
+                <p>Nombre: <input type="text" required th:field="*{name}" /></p>
+
+                <button type="submit" value="Actualizar" class="btn btn-warning font-weight-bold">
+                    Actualizar<img src="/img/icons/pencil-fill.svg" class="crud-icon" alt="" width="16" height="16">
+                </button>
+            </form>
+
+            <form method="post" th:action="@{/bank/delete}" class="mt-3" th:unless="${bank.id == null}">
+                <input type="hidden" name="bankId" th:value="${bank.id}" />
+                <button type="submit" value="Borrar" class="btn btn-danger font-weight-bold">
+                    Borrar<img src="/img/icons/x-square-fill.svg" class="crud-icon" alt="" width="16" height="16">
+                </button>
+            </form>
+        </div>
+    </main>
+
+
+    <footer th:replace="fragments/footer.html :: footer"></footer>
+    <nav th:replace="fragments/navbar.html :: navbar-js"></nav>
+</body>
+</html>

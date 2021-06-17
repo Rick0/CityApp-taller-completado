@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<div class="container text-primary font-weight-bold h1 pb-5" th:fragment="listTitle(title)">
+    <span th:text="${title}"></span>
+</div>
+
+
+<div class="container list-table container-fluid" th:fragment="listEmpty(emptyMessage)">
+    <div class="row row-fluid font-weight-bold h2">
+        <div class="col-md-6 cell-fluid text-center table-warning" th:text="${emptyMessage}"></div>
+    </div>
+</div>

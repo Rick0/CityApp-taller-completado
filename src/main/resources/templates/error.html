@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/head.html :: head"></head>
+<head><title>CityApp - Error</title></head>
+
+<body class="navbar-offset">
+<nav th:replace="fragments/navbar.html :: navbar"></nav>
+
+
+<main role="main" class="pt-3 pb-3 vertical-stretch">
+    <div th:replace="fragments/list.html :: listTitle('Algo salió mal!')"></div>
+
+    <div class="container">
+        <table>
+            <tr><td>Date</td><td th:text="${timestamp}"/></tr>
+            <tr><td>Path</td><td th:text="${path}"/></tr>
+            <tr><td>Error</td><td th:text="${error}"/></tr>
+            <tr><td>Status</td><td th:text="${status}"/></tr>
+            <tr><td>Message</td><td th:text="${message}"/></tr>
+            <tr><td>Exception</td><td th:text="${exception}"/></tr>
+            <tr><td>Trace</td><td><pre th:text="${trace}"/></td></tr>
+        </table>
+    </div>
+</main>
+
+
+<footer th:replace="fragments/footer.html :: footer"></footer>
+<nav th:replace="fragments/navbar.html :: navbar-js"></nav>
+</body>
+</html>

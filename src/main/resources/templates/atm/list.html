@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/head.html :: head"></head>
+<head><title>CityApp - Cajeros automáticos</title></head>
+
+<body class="navbar-offset">
+    <nav th:replace="fragments/navbar.html :: navbar"></nav>
+
+
+    <main role="main" class="pt-3 pb-3 vertical-stretch">
+        <div th:replace="fragments/list.html :: listTitle('Listado de cajeros automáticos')"></div>
+
+        <div th:if="${atms.empty}">
+            <div th:replace="fragments/list.html :: listEmpty('No hay cajeros automáticos')"></div>
+        </div>
+
+        <div class="container table-striped table-hover" th:unless="${atms.empty}">
+            <div class="row bg-dark text-light font-weight-bold h2 list-header">
+                <div class="col-1 align-self-center">ID</div>
+                <div class="col-2 align-self-center" title="Nombre del banco">Banco</div>
+                <div class="col-1 align-self-center">Red</div>
+                <div class="col-1 align-self-center" title="Cantidad de terminales">Term.</div>
+                <div class="col-2 align-self-center" title="Nombre de calle">Calle</div>
+                <div class="col-1 align-self-center" title="Altura de calle">Altura</div>
+                <div class="col-2 align-self-center" title="Nombre de barrio">Barrio</div>
+                <div class="col-2 align-self-center" title="ID de comuna">Comuna</div>
+            </div>
+
+            <div class="row list-row" th:each="atm : ${atms}">
+                <div class="col-1 align-self-center" th:text="${atm.id}"></div>
+                <div class="col-2 align-self-center" th:text="${atm.bankName}"></div>
+                <div class="col-1 align-self-center" th:text="${atm.bankNetwork}"></div>
+                <div class="col-1 align-self-center" th:text="${atm.terminalQty}"></div>
+                <div class="col-2 align-self-center" th:text="${atm.streetName}"></div>
+                <div class="col-1 align-self-center" th:text="${atm.streetHeight}"></div>
+                <div class="col-2 align-self-center" th:text="${atm.neighbourhoodName}"></div>
+                <div class="col-2 align-self-center" th:text="${atm.communeId}"></div>
+            </div>
+        </div>
+
+        <nav class="pt-2" th:unless="${atms.empty}">
+            <ul class="pagination justify-content-center font-weight-bold">
+                <li class="page-item" th:classappend="${page <= 0 ? 'disabled' : ''}">
+                    <a class="page-link" th:href="@{/atm/list(page=${page - 1})}">Previo</a>
+                </li>
+                <li class="page-item disabled">
+                    <a class="page-link" href="#" th:text="${page + 1}"></a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" th:href="@{/atm/list(page=${page + 1})}">Siguiente</a>
+                </li>
+            </ul>
+        </nav>
+    </main>
+
+
+    <footer th:replace="fragments/footer.html :: footer"></footer>
+    <nav th:replace="fragments/navbar.html :: navbar-js"></nav>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head th:insert="fragments/head.html :: head"></head>
+<head><title>CityApp - Barrios</title></head>
+
+<body class="navbar-offset">
+    <nav th:replace="fragments/navbar.html :: navbar"></nav>
+
+
+    <main role="main" class="pt-3 pb-3 vertical-stretch">
+        <div th:replace="fragments/list.html :: listTitle('Listado de barrios')"></div>
+
+        <div th:if="${neighbourhoods.empty}">
+            <div th:replace="fragments/list.html :: listEmpty('No hay barrios')"></div>
+        </div>
+
+        <div class="container table-striped table-hover" th:unless="${neighbourhoods.empty}">
+            <div class="row bg-dark text-light font-weight-bold h2 list-header">
+                <div class="col-3 align-self-center">Nombre</div>
+                <div class="col-3 align-self-center">Área</div>
+                <div class="col-3 align-self-center">Perímetro</div>
+                <div class="col-3 align-self-center">ID de comuna</div>
+            </div>
+
+            <a th:href="@{/neighbourhood/crud(neighbourhoodName=${neighbourhood.name})}" class="row list-row table-row-a" th:each="neighbourhood : ${neighbourhoods}">
+                <div class="col-3 align-self-center" th:text="${neighbourhood.name}"></div>
+                <div class="col-3 align-self-center" th:text="${neighbourhood.area}"></div>
+                <div class="col-3 align-self-center" th:text="${neighbourhood.perimeter}"></div>
+                <div class="col-3 align-self-center" th:text="${neighbourhood.communeId}"></div>
+            </a>
+        </div>
+    </main>
+
+
+    <footer th:replace="fragments/footer.html :: footer"></footer>
+    <nav th:replace="fragments/navbar.html :: navbar-js"></nav>
+</body>
+</html>

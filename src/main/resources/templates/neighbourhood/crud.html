@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head th:insert="fragments/head.html :: head"></head>
+<head><title>CityApp - Barrios</title></head>
+
+<body class="navbar-offset">
+    <nav th:replace="fragments/navbar.html :: navbar"></nav>
+
+
+    <main role="main" class="pt-3 pb-3 vertical-stretch">
+        <div th:replace="fragments/list.html :: listTitle('Modificar un barrio')"></div>
+
+        <div class="container">
+            <form method="post" th:action="@{/neighbourhood/add}" th:object="${neighbourhood}" th:if="${neighbourhood.name == null}">
+                <p>Nombre: <input type="text" required th:field="*{name}" /></p>
+                <p>Área: <input type="number" min="0" step="0.01" required th:field="*{area}" /></p>
+                <p>Perímetro: <input type="number" min="0" step="0.00001" required th:field="*{perimeter}" /></p>
+                <p>ID de comuna: <input type="number" required th:field="*{communeId}" /></p>
+
+                <button type="submit" value="Crear" class="btn btn-primary font-weight-bold" >
+                    Crear<img src="/img/icons/plus-square-fill.svg" class="crud-icon" alt="Agregar" width="16" height="16">
+                </button>
+            </form>
+
+            <form method="post" th:action="@{/neighbourhood/put}" th:object="${neighbourhood}" th:unless="${neighbourhood.name == null}">
+                <p>Nombre: <input type="text" th:field="*{name}" class="readonly-input" readonly /></p>
+                <p>Área: <input type="number" min="0" step="0.01" required th:field="*{area}" /></p>
+                <p>Perímetro: <input type="number" min="0" step="0.00001" required th:field="*{perimeter}" /></p>
+                <p>ID de comuna: <input type="number" required th:field="*{communeId}" /></p>
+
+                <button type="submit" value="Actualizar" class="btn btn-warning font-weight-bold">
+                    Actualizar<img src="/img/icons/pencil-fill.svg" class="crud-icon" alt="" width="16" height="16">
+                </button>
+            </form>
+
+            <form method="post" th:action="@{/neighbourhood/delete}" class="mt-3" th:unless="${neighbourhood.name == null}">
+                <input type="hidden" name="neighbourhoodName" th:value="${neighbourhood.name}" />
+                <button type="submit" value="Borrar" class="btn btn-danger font-weight-bold">
+                    Borrar<img src="/img/icons/x-square-fill.svg" class="crud-icon" alt="" width="16" height="16">
+                </button>
+            </form>
+        </div>
+    </main>
+
+
+    <footer th:replace="fragments/footer.html :: footer"></footer>
+    <nav th:replace="fragments/navbar.html :: navbar-js"></nav>
+</body>
+</html>

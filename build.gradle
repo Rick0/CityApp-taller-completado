@@ -1,0 +1,30 @@
+plugins {
+	id 'org.springframework.boot' version '2.3.6.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.10.RELEASE'
+	id 'java'
+}
+
+group = 'com.uba.fi.bdd'
+version = '0.0.8-SNAPSHOT'
+sourceCompatibility = '14'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	// Spring boot
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+
+	// Front end
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+
+	// JDBC API
+	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+
+	// PostgreSQL driver
+	runtimeOnly 'org.postgresql:postgresql'
+
+	// Easier life for developing
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+}
